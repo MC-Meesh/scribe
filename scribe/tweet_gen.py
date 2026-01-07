@@ -50,12 +50,12 @@ TWEET FORMULA - Use this structure:
 
 STYLE: {style_instruction}
 
-GOOD EXAMPLES:
-✓ "Building a legal case management tool. Today: shipped a client portal where lawyers can share updates in real-time. Users won't have to call asking 'what's the status?' anymore. Next: notifications."
+GOOD EXAMPLES (all under 260 chars):
+✓ "Building a legal case tool. Shipped a client portal today - lawyers can share updates in real-time. No more 'what's my status?' calls. Notifications next 🚀" (157 chars)
 
-✓ "Day 12 of building in public: Added Vercel deployment to my SaaS starter. Went from localhost to production in 20 mins. The DevOps learning curve is real but we're shipping. Auth & payments next week 🚀"
+✓ "Day 12 of #buildinpublic: Deployed my SaaS to Vercel in 20 mins. Localhost → production feels amazing. Learning DevOps the hard way. Auth next week!" (149 chars)
 
-✓ "Solved a tough one today: rewrote our data sync logic to handle offline mode. Tested on my phone with airplane mode - it just works. This is the kind of polish that'll set us apart."
+✓ "Solved offline mode today. Rewrote our sync logic and tested on airplane mode - it just works. This polish will set us apart." (128 chars)
 
 BAD EXAMPLES (Don't do this):
 ✗ "Updated styling across multiple pages and fixed config for Vercel deployment"
@@ -63,12 +63,12 @@ BAD EXAMPLES (Don't do this):
 ✗ "Next.js project update: Fixed Vercel deployment issues, updated multiple page components"
 
 REQUIREMENTS:
-- Under 280 characters
+- CRITICAL: Keep under 260 characters (aim for 240-260 to be safe)
 - Lead with WHAT you're building, not how
 - Frame technical work as user/business value
-- Include specific details but with context
+- Be concise - every word must earn its place
 - Sound human - use "I" and "we", share learnings
-- Emojis are fine but don't overdo it
+- Emojis are fine but don't overdo it (1-2 max)
 - Avoid generic words like "updated", "improved", "fixed" without context
 
 Generate {num_options} different tweet options, each on its own line, numbered 1., 2., 3., etc.
@@ -117,14 +117,14 @@ Tweet 1 (HOOK): What you're building + today's big win. Make people want to read
 Tweet 2-3 (DETAILS): Expand on the journey - what you built, challenges solved, learnings
 Tweet 4 (CLOSE): What's next or key insight
 
-GOOD THREAD EXAMPLE:
-1/ "Just shipped the client portal for my legal case management SaaS. Lawyers can now share case updates with clients in real-time. No more 'what's my case status?' calls. This was the #1 requested feature 🎉"
+GOOD THREAD EXAMPLE (each under 260 chars):
+1/ "Shipped client portal for my legal SaaS. Lawyers share updates in real-time, clients stop calling for status. #1 requested feature ✅" (136 chars)
 
-2/ "The interesting part: built a notification system that emails clients when there's an update, but also saves it in the portal. Took 3 attempts to get the state management right in Next.js, but it's solid now."
+2/ "Built a notification system that emails + saves to portal. Took 3 tries to nail Next.js state management, but it's solid." (124 chars)
 
-3/ "Deployed to Vercel in 20 mins. Added some polish to the contact page and careers section while I was at it. The styling improvements make the whole app feel more professional."
+3/ "Deployed to Vercel in 20 mins. Polished contact & careers pages too. The styling makes it feel professional." (112 chars)
 
-4/ "Next up: adding document uploads so lawyers can share files directly. Then we're ready for beta users. Building in public keeps me accountable 💪"
+4/ "Next: document uploads for file sharing. Then beta users. Building in public keeps me accountable 💪" (103 chars)
 
 BAD THREAD EXAMPLE (Don't do this):
 1/ "Today's Next.js progress: Updated styling across multiple pages"
@@ -132,10 +132,10 @@ BAD THREAD EXAMPLE (Don't do this):
 3/ "Changed 2,895 lines of code. Building in public!"
 
 REQUIREMENTS:
-- Each tweet under 280 characters
+- CRITICAL: Each tweet must be under 260 characters (aim for 240-260)
 - Tell a story, not a changelog
 - Include specific wins with business/user context
-- Share learnings or challenges overcome
+- Be concise and punchy - cut unnecessary words
 - Sound authentic and human
 - 2-4 tweets depending on content
 - End with what's next or a key insight
