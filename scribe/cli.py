@@ -1,9 +1,40 @@
 #!/usr/bin/env python3
 import argparse
 import sys
+import threading
+import time
 from pathlib import Path
 from .git_parser import GitParser
 from .tweet_gen import TweetGenerator
+
+
+class Spinner:
+    """Simple CLI spinner for showing progress"""
+    def __init__(self, message="Loading"):
+        self.spinner_chars = ["⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏"]
+        self.message = message
+        self.running = False
+        self.thread = None
+
+    def _spin(self):
+        idx = 0
+        while self.running:
+            sys.stdout.write(f"\r{self.spinner_chars[idx]} {self.message}")
+            sys.stdout.flush()
+            idx = (idx + 1) % len(self.spinner_chars)
+            time.sleep(0.1)
+        sys.stdout.write("\r" + " " * (len(self.message) + 3) + "\r")
+        sys.stdout.flush()
+
+    def start(self):
+        self.running = True
+        self.thread = threading.Thread(target=self._spin)
+        self.thread.start()
+
+    def stop(self):
+        self.running = False
+        if self.thread:
+            self.thread.join()
 
 
 def main():
@@ -90,24 +121,37 @@ Examples:
         # Format for AI
         commits_text = parser_obj.format_commits_for_ai(commits)
 
-        # Generate tweets
-        print(f"\n🤖 Generating tweets using {args.provider}...")
+        # Generate tweets with loading indicator
         generator = TweetGenerator(provider=args.provider)
 
         if args.thread:
-            tweets = generator.generate_thread(commits_text)
-            print("\n📝 Tweet Thread:\n")
+            spinner = Spinner(f"🤖 Generating tweet thread using {args.provider}...")
+            spinner.start()
+            try:
+                tweets = generator.generate_thread(commits_text)
+            finally:
+                spinner.stop()
+
+            print(f"✨ Generated tweet thread!\n")
+            print("📝 Tweet Thread:\n")
             for i, tweet in enumerate(tweets, 1):
                 print(f"{i}. {tweet}")
                 if i < len(tweets):
                     print()  # Empty line between tweets
         else:
-            tweets = generator.generate_tweets(
-                commits_text,
-                style=args.style,
-                num_options=args.options
-            )
-            print(f"\n📝 Tweet Options ({args.style} style):\n")
+            spinner = Spinner(f"🤖 Generating tweets using {args.provider}...")
+            spinner.start()
+            try:
+                tweets = generator.generate_tweets(
+                    commits_text,
+                    style=args.style,
+                    num_options=args.options
+                )
+            finally:
+                spinner.stop()
+
+            print(f"✨ Generated {len(tweets)} tweet options!\n")
+            print(f"📝 Tweet Options ({args.style} style):\n")
             for i, tweet in enumerate(tweets, 1):
                 print(f"{i}. {tweet}\n")
 
